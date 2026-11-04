@@ -1,0 +1,351 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        /* shadcn surface tokens, mapped to the portfolio palette */
+        --background: 195 33% 98%;
+        --foreground: 210 10% 4%;
+        --card: 0 0% 100%;
+        --card-foreground: 210 10% 4%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 210 10% 4%;
+        --primary: 210 10% 4%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 195 15% 94%;
+        --secondary-foreground: 210 10% 8%;
+        --muted: 195 15% 94%;
+        --muted-foreground: 210 6% 42%;
+        --accent: 185 98% 45%;
+        --accent-foreground: 210 10% 4%;
+        --destructive: 0 72% 48%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 200 14% 89%;
+        --input: 200 14% 89%;
+        --ring: 185 98% 45%;
+        --radius: 0.5rem;
+        --chart-1: 185 98% 45%;
+        --chart-2: 210 10% 12%;
+        --chart-3: 200 14% 60%;
+        --chart-4: 43 74% 66%;
+        --chart-5: 27 87% 67%;
+
+        /* portfolio design tokens */
+        --pf-bg: #f7fafb;
+        --pf-fg: #090a0b;
+        --surface-black: #0e0f14;
+        --pf-muted: rgb(9 10 11 / 0.35);
+        --pf-black: #090a0b;
+        --pf-dark: #0e0f14;
+        --pf-soft: #dfe5e9;
+        --pf-on-dark: #ffffff;
+        --pf-on-dark-muted: #b6c1c8;
+        --pf-accent: #02d2e3;
+        --pf-map-dot: #7a7a7a;
+        --pf-grid: #4d4d4d;
+        --pf-ghost: #1e1e1e;
+        --pf-tl-outline: #535450;
+        --pf-tl-fill: rgb(255 255 255 / 0.1);
+        --pf-rail: rgb(255 255 255 / 0.2);
+        --pf-contour-light: rgb(9 10 11 / 0.08);
+        --pf-contour-dark: rgb(255 255 255 / 0.1);
+
+        --font-heading: "Oswald", "Arial Narrow", system-ui, sans-serif;
+        --font-body: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+        --font-display: "Oswald", "Arial Narrow", system-ui, sans-serif;
+        --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+        --header-h: 76px;
+    }
+
+    * {
+        @apply border-border outline-ring/50;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: var(--header-h);
+        -webkit-text-size-adjust: 100%;
+    }
+
+    html.lenis,
+    html.lenis body {
+        height: auto;
+    }
+
+    .lenis.lenis-smooth {
+        scroll-behavior: auto !important;
+    }
+
+    .lenis.lenis-stopped {
+        overflow: hidden;
+    }
+
+    body {
+        @apply bg-background text-foreground font-body;
+        background-color: var(--pf-bg);
+        color: var(--pf-fg);
+        font-family: var(--font-body);
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+    }
+
+    ::selection {
+        background: var(--pf-accent);
+        color: #090a0b;
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--pf-accent);
+        outline-offset: 3px;
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-family: var(--font-heading);
+    }
+}
+
+@layer components {
+    .pf-display {
+        font-family: var(--font-heading);
+        font-weight: 700;
+        text-transform: uppercase;
+        line-height: 0.95;
+        letter-spacing: -0.012em;
+    }
+
+    .pf-name {
+        font-size: clamp(44px, 6.667vw, 96px);
+        line-height: 0.95;
+    }
+
+    .pf-masthead {
+        font-size: clamp(30px, 3.82vw, 55px);
+        line-height: 0.98;
+    }
+
+    .pf-masthead-lg {
+        font-size: clamp(38px, 6.667vw, 96px);
+        line-height: 0.95;
+    }
+
+    .pf-figure {
+        font-family: var(--font-heading);
+        font-weight: 500;
+        font-size: clamp(22px, 2.64vw, 38px);
+        line-height: 1;
+    }
+
+    .pf-eyebrow {
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+    }
+
+    .pf-label {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+    }
+
+    .pf-body {
+        font-size: 14px;
+        line-height: 1.65;
+    }
+
+    /* four 10px corner strokes, no border */
+    .pf-bracket {
+        position: relative;
+    }
+
+    .pf-bracket::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        --bk: rgb(255 255 255 / 0.55);
+        background-image: linear-gradient(var(--bk) 0 0), linear-gradient(var(--bk) 0 0),
+            linear-gradient(var(--bk) 0 0), linear-gradient(var(--bk) 0 0),
+            linear-gradient(var(--bk) 0 0), linear-gradient(var(--bk) 0 0),
+            linear-gradient(var(--bk) 0 0), linear-gradient(var(--bk) 0 0);
+        background-repeat: no-repeat;
+        background-position: left top, left top, right top, right top, left bottom, left bottom,
+            right bottom, right bottom;
+        background-size: 10px 1px, 1px 10px, 10px 1px, 1px 10px, 10px 1px, 1px 10px, 10px 1px, 1px 10px;
+    }
+
+    .pf-bracket--light::after {
+        --bk: rgb(9 10 11 / 0.45);
+    }
+
+    /* bottom-right 8px chamfer */
+    .pf-chamfer {
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+    }
+
+    /* stepped-corner image plate */
+    .pf-stepped {
+        clip-path: polygon(0 22px,
+                11px 22px,
+                11px 11px,
+                22px 11px,
+                22px 0,
+                100% 0,
+                100% calc(100% - 22px),
+                calc(100% - 11px) calc(100% - 22px),
+                calc(100% - 11px) calc(100% - 11px),
+                calc(100% - 22px) calc(100% - 11px),
+                calc(100% - 22px) 100%,
+                0 100%);
+    }
+
+    /* project plate screenshots: cover crop anchored to the top edge */
+    .pf-plate-img img,
+    img.pf-plate-img {
+        object-fit: cover;
+        object-position: center top;
+    }
+
+    .pf-plate {
+        background: var(--pf-tl-fill);
+        box-shadow: inset 0 0 0 1px var(--pf-tl-outline);
+    }
+
+    /* dark chequered plate used for generated project covers */
+    .pf-chequer {
+        background-color: #0b0d12;
+        background-image: conic-gradient(#12151d 0 25%,
+                #0b0d12 0 50%,
+                #12151d 0 75%,
+                #0b0d12 0);
+        background-size: 26px 26px;
+    }
+
+    .pf-rule {
+        height: 1px;
+        background: var(--pf-accent);
+        transform-origin: left;
+    }
+
+    .pf-underline {
+        position: relative;
+    }
+
+    .pf-underline::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        height: 1px;
+        width: 100%;
+        background: currentColor;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 250ms ease;
+    }
+
+    .pf-underline:hover::after,
+    .pf-underline:focus-visible::after {
+        transform: scaleX(1);
+    }
+
+    .pf-grid-lines {
+        background-image: repeating-linear-gradient(to right,
+                rgb(255 255 255 / 0.07) 0 8px,
+                transparent 8px 18px),
+            repeating-linear-gradient(to bottom, rgb(255 255 255 / 0.07) 0 8px, transparent 8px 18px);
+        background-size: 33.3333% 100%, 100% 50%;
+        background-position: 0 0, 0 0;
+        animation: pf-crawl 7s linear infinite;
+    }
+
+    .pf-ping::after {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: 9999px;
+        border: 1px solid var(--pf-accent);
+        animation: pf-ping 4.2s ease-out infinite;
+    }
+
+    .pf-live-dot {
+        position: relative;
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        border-radius: 9999px;
+        background: var(--pf-accent);
+    }
+
+    .pf-scrollbar-none {
+        scrollbar-width: none;
+    }
+
+    .pf-scrollbar-none::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@keyframes pf-crawl {
+    from {
+        background-position: 0 0, 0 0;
+    }
+
+    to {
+        background-position: 0 36px, -36px 0;
+    }
+}
+
+@keyframes pf-ping {
+    0% {
+        transform: scale(0.85);
+        opacity: 0.8;
+    }
+
+    70% {
+        transform: scale(2.1);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(2.1);
+        opacity: 0;
+    }
+}
+
+/* unlayered so they win over the default 150ms from transition-* utilities */
+.dur-250 {
+    transition-duration: 250ms;
+}
+
+.dur-700 {
+    transition-duration: 700ms;
+}
+
+.dur-900 {
+    transition-duration: 900ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .pf-grid-lines {
+        animation: none;
+    }
+
+    .pf-ping::after {
+        animation: none;
+    }
+
+    .dur-250,
+    .dur-700,
+    .dur-900 {
+        transition-duration: 1ms;
+    }
+}
