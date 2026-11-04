@@ -1,51 +1,51 @@
-# Abhishek Dewangan - Personal Portfolio
+# Abhishek Dewangan · Portfolio
 
-Personal portfolio website showcasing engineering projects, academic background at NIT Raipur, and contact channels.
+Personal portfolio of Abhishek Dewangan, B.Tech CSE student at NIT Raipur and full-stack web developer (C++, JavaScript, Java).
+
+**Live:** https://<your-vercel-url>
 
 ## Features
+- Hero with cursor-driven portrait reveal on canvas
+- Smooth scrolling (Lenis), parallax and scroll-triggered animations
+- "The Work So Far" animated lap track that lists my projects
+- Project showcase with GitHub and live links
+- Contact form that emails me through a serverless function
+- AI assistant that answers questions from my profile data
+- Responsive layout, keyboard-accessible, respects reduced-motion
 
-- **Smooth Interactive Experience**: High-performance custom canvas shaders, liquid neon reveal, magnetic navigation, and Lenis smooth scrolling.
-- **Projects Showcase**: Interactive showcase for Volsentra AI, Voxaryn AI, CiviclensAI, and StudyTrack with live demos and repository links.
-- **Serverless Contact Form**: Direct message delivery via Resend API with server-side validation and in-memory rate limiting.
-- **AI Portfolio Assistant**: Context-aware portfolio assistant powered by Anthropic's Claude API, answering questions strictly based on profile data.
-- **Zero Framework Bloat**: Pure Vite + React 18 frontend with Tailwind CSS styling and lightweight Vercel serverless functions.
+## Projects shown
+| Project | Links |
+|---|---|
+| Volsentra AI: electricity theft detection with explainable ML | [GitHub](https://github.com/AbhishekDewangan04/volsentraai) · [Live](https://volsentraai.vercel.app/) |
+| Voxaryn AI: customizable AI voice agent platform | [GitHub](https://github.com/AbhishekDewangan04/voxarynai) · [Live](https://voxarynai.vercel.app/) |
+| CiviclensAI: civic intelligence with geospatial incident tracking | [GitHub](https://github.com/AbhishekDewangan04/CiviclensAI) · [Live](https://civiclens-frontend-nine.vercel.app/) |
+| StudyTrack: student productivity app | [GitHub](https://github.com/AbhishekDewangan04/StudyTrack) · [Live](https://frontend-delta-fawn-99.vercel.app/) |
 
-## Tech Stack
+## Tech stack
+React · Vite · Tailwind CSS · Lenis · Canvas API · Vercel Serverless Functions · Resend (email) · Anthropic API (assistant)
 
-- **Frontend**: React 18, Vite, Tailwind CSS, Lucide React, Lenis
-- **Backend / Serverless (Vercel)**:
-  - `api/contact.js`: Form submission handler with in-memory IP rate limiting and Resend email integration.
-  - `api/chat.js`: AI chatbot endpoint using Anthropic Messages API.
-- **Deployment**: Vercel
+## Run locally
+```bash
+git clone https://github.com/AbhishekDewangan04/newportfolio.git
+cd newportfolio
+npm install
+cp .env.example .env   # add your own keys
+npm run dev
+```
+The contact form and assistant live in `api/` and need `npx vercel dev` to run locally.
 
-## Local Setup
+## Environment variables
+| Name | Purpose |
+|---|---|
+| `RESEND_API_KEY` | Sends contact-form emails |
+| `OWNER_EMAIL` | Where messages are delivered |
+| `ANTHROPIC_API_KEY` | Powers the AI assistant (optional) |
 
-1. **Install dependencies**:
-   ```bash
-   npm install
-   ```
+## Project data
+Edit `src/data/` (profile, projects, education) to update content.
 
-2. **Configure environment variables**:
-   Create a `.env` file in the root based on `.env.example`:
-   ```env
-   RESEND_API_KEY=your_resend_api_key
-   OWNER_EMAIL=your_email@domain.com
-   ANTHROPIC_API_KEY=your_anthropic_api_key
-   ```
+## Deploy
+Import the repo into Vercel (Vite preset), add the environment variables above and deploy.
 
-3. **Run the local development server**:
-   ```bash
-   npm run dev
-   ```
-   Open `http://localhost:5173`.
-
-## Deployment
-
-Deploy directly to Vercel:
-1. Push this repository to GitHub (`https://github.com/AbhishekDewangan04/new-portfolio`).
-2. Import the project in Vercel.
-3. In Project Settings > Environment Variables, add:
-   - `RESEND_API_KEY`
-   - `OWNER_EMAIL`
-   - `ANTHROPIC_API_KEY`
-4. Click Deploy.
+## Contact
+LinkedIn: https://www.linkedin.com/in/abhishek-dewangan-30a176317
